@@ -11,7 +11,6 @@ const initialMovie = {
 
 export default function UpdateForm(props) {
     const [movie, setMovie] = useState(initialMovie);
-    const [newstar] = useState("")
     const { id } = useParams();
 
     useEffect(() => {

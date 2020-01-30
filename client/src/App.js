@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
+import NewMovieForm from "./RequestComponents/NewMovieForm"
 import Movie from "./Movies/Movie";
 import UpdateForm from "./RequestComponents/UpdateForm"
 
@@ -27,6 +28,9 @@ const App = () => {
       <Route path="/update-form/:id"
       render={props => <UpdateForm {...props} movieData={movieData} />}
       />
+      <Route path="/new-movie"
+       render={ props => <NewMovieForm {...props} />}
+       />
     </>
   );
 };
