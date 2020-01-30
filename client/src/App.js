@@ -7,7 +7,7 @@ import UpdateForm from "./RequestComponents/UpdateForm"
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
-
+  const [movieData, setMovieData] = useState([])
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
   };
@@ -15,7 +15,9 @@ const App = () => {
   return (
     <>
       <SavedList list={savedList} />
-      <Route exact path="/" component={MovieList} />
+      <Route exact path="/" 
+      render={props => <MovieList {...props } setMovieData={setMovieData} />}
+      />
       <Route
         path="/movies/:id"
         render={props => {
@@ -23,7 +25,7 @@ const App = () => {
         }}
       />
       <Route path="/update-form/:id"
-      render={props => <UpdateForm {...props} />}
+      render={props => <UpdateForm {...props} movieData={movieData} />}
       />
     </>
   );

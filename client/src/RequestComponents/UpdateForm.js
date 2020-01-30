@@ -13,6 +13,14 @@ export default function UpdateForm(props) {
     const [movie, setMovie] = useState(initialMovie);
     const [newstar] = useState("")
     const { id } = useParams();
+
+    useEffect(() => {
+        const movieToUpdate = props.movieData.find(movie => `${movie.id}` === id);
+        console.log("this is moveToUpdate", movieToUpdate)
+        console.log("this is movie", movie)
+        setMovie(movieToUpdate)
+        console.log("this is movie after the update", movie)
+    }, [props.movieData, id])
     
     useEffect(() => {
       setMovie({
@@ -91,7 +99,7 @@ export default function UpdateForm(props) {
                     name="title"
                     onChange={changeHandler}
                     placeholder="title"
-                    value={movie.name}
+                    value={movie.title}
                 />
                  <input
                     type="text"
